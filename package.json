@@ -6,7 +6,7 @@
   "description": "A utility to convert Recogito JSON-LD image annotations into a raster mask image",
   "main": "src/index.js",
   "scripts": {
-    "start": "ts-node --esm src/index.js"
+    "start": "node src/index.js"
   },
   "repository": {
     "type": "git",
