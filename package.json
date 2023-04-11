@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/in-rome/recogito-raster-converter#readme",
   "dependencies": {
-    "canvas": "^2.11.2"
+    "canvas": "^2.11.2",
+    "path2d-polyfill": "^2.0.1"
   }
 }

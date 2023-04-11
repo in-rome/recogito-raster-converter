@@ -1,5 +1,10 @@
 import fs from 'fs';
-import { createCanvas } from 'canvas';
+import { createCanvas, CanvasRenderingContext2D } from 'canvas';
+import { polyfillPath2D } from 'path2d-polyfill';
+
+global.CanvasRenderingContext2D = CanvasRenderingContext2D;
+
+polyfillPath2D(global);
 
 const WIDTH = 28838; 
 
@@ -33,12 +38,14 @@ annotations.forEach(annotation => {
 
       ctx.closePath();
       ctx.fill();
+    } else {
+      const [c, d, path] = value.match(/(<path d=")([^"]*)/) || [];
+      console.log(path);
     }
-  } else {
-
   }
 });
 
+/*
 console.log('Creating PNG file...');
 const stream = canvas.createPNGStream();
 
@@ -46,3 +53,4 @@ const out = fs.createWriteStream('./3g1xhmd41yfunw.png')
 stream.pipe(out)
 
 out.on('finish', () => console.log('Done.'));
+*/
