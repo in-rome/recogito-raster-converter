@@ -13,9 +13,11 @@ const COLORS = {
   label: '#0000ff'
 }
 
-const WIDTH = 28838; 
+const MAP = 'AGRO-116';
 
-const HEIGHT = 23276;
+const WIDTH = 18214; 
+
+const HEIGHT = 18166;
 
 const canvas = createCanvas(WIDTH, HEIGHT);
 
@@ -45,7 +47,7 @@ const area = annotation => {
 }
 
 // Load annotations from file
-const annotations = JSON.parse(fs.readFileSync('./data/3g1xhmd41yfunw.jsonld', 'utf-8'));
+const annotations = JSON.parse(fs.readFileSync(`./data/${MAP}.jsonld`, 'utf-8'));
 
 // Sort annotations by area, largest first (so that smallest are drawn at the end)
 annotations.sort((a, b) => area(b) - area(a));
@@ -85,7 +87,7 @@ annotations.forEach(annotation => {
 console.log('Creating PNG file...');
 const stream = canvas.createPNGStream();
 
-const out = fs.createWriteStream('./output/3g1xhmd41yfunw.png')
+const out = fs.createWriteStream(`./output/${MAP}.png`)
 stream.pipe(out)
 
 out.on('finish', () => console.log('Done.'));
